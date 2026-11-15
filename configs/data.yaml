@@ -1,0 +1,9 @@
+# Jeu principal : Flickr8k (~8 000 images, 5 légendes par image)
+dataset: flickr8k
+kaggle_id: adityajn105/flickr8k   # contient Images/ et captions.txt
+raw_dir: data/raw
+subset_dir: data/subset
+
+# Pour l'évaluation, un sous-ensemble de 500 à 2 000 images suffit
+n_images: 500
+seed: 42           # même graine => mêmes images pour toutes les précisions

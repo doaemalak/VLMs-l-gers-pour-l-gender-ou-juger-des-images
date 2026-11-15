@@ -1,0 +1,18 @@
+# VLM n°1 — modèle à choisir par l'équipe (doit tenir dans 12 Go de VRAM)
+name: vlm1
+model_id: Qwen/Qwen2.5-VL-3B-Instruct
+
+# Taille d'image attendue par le modèle (redimensionnement)
+image_size: 448
+
+# Légendage (option A)
+caption_prompt: "Describe this image in one sentence."
+max_new_tokens: 40
+
+# Jugement (option B)
+judge_prompt: >
+  Rate the quality of this image on a scale from 1 to 10.
+  Answer with a single integer only.
+
+subset_csv: data/subset/subset.csv
+output_dir: results

@@ -1,0 +1,33 @@
+# Données et modèles lourds : jamais dans Git
+data/raw/
+data/images/
+data/subset/
+*.zip
+*.tar
+*.tar.gz
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+checkpoints/
+hf_cache/
+
+# Vidéos de démo lourdes (garder uniquement une courte vidéo compressée)
+demo/*.mov
+demo/*.avi
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Système
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+kaggle.json

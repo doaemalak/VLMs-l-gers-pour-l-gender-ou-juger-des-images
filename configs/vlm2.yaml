@@ -1,0 +1,15 @@
+# VLM n°2 — modèle à choisir par l'équipe (doit tenir dans 12 Go de VRAM)
+name: vlm2
+model_id: HuggingFaceTB/SmolVLM-Instruct
+
+image_size: 384
+
+caption_prompt: "Describe this image in one sentence."
+max_new_tokens: 40
+
+judge_prompt: >
+  Rate the quality of this image on a scale from 1 to 10.
+  Answer with a single integer only.
+
+subset_csv: data/subset/subset.csv
+output_dir: results
