@@ -16,7 +16,7 @@ Licences relevées sur les pages Hugging Face des modèles (novembre 2026).
 
 | Jeu | Licence | Remarques |
 |---|---|---|
-| Flickr8k (Kaggle `adityajn105/flickr8k`) | Usage de **recherche et d'enseignement**, non commercial | Les photos viennent de Flickr et restent la propriété de leurs auteurs. Elles ne sont **pas** déposées dans Git : le script `data/download.py` les télécharge. |
+| Flickr8k (Kaggle `adityajn105/flickr8k`) | Usage de **recherche et d'enseignement**, non commercial | Les photos viennent de Flickr et restent la propriété de leurs auteurs. Elles ne sont **pas** déposées dans Git : le script `data/download.py` les télécharge. Seule exception : 4 photos en petite taille dans `results/lora/grille_generation.png`, à titre d'illustration pédagogique (colonne « vraie photo »). |
 
 ## Bibliothèques
 
