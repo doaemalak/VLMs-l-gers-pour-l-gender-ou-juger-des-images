@@ -42,6 +42,9 @@ def train(cfg_path: str, source: str, max_steps: int | None = None) -> dict | No
     from peft.utils import get_peft_model_state_dict
     from transformers import CLIPTextModel, CLIPTokenizer
 
+    if not torch.cuda.is_available():
+        raise RuntimeError("Pas de GPU : Exécution → Modifier le type d'exécution → GPU T4, "
+                           "puis relancer toutes les cellules depuis le début.")
     cfg = load_config(cfg_path)
     t = cfg["train"]
     test_mode = max_steps is not None
