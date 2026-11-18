@@ -1,6 +1,9 @@
 torch
 transformers>=4.50
 accelerate
+diffusers
+peft
+torchvision
 bitsandbytes
 pillow
 pandas

@@ -21,3 +21,13 @@ sources:
 
 out_dir: data/lora          # images + metadata.jsonl (format attendu par diffusers)
 results_dir: results/lora   # récapitulatif léger, gardé dans Google Drive
+
+# Étape 8 : entraînement (identique pour les 3 sources, seule la légende change)
+train:
+  base_model: stable-diffusion-v1-5/stable-diffusion-v1-5
+  resolution: 512        # taille native de Stable Diffusion 1.5
+  rank: 8                # taille des « post-it » LoRA (petit = léger, moins de risque de surapprentissage)
+  learning_rate: 1.0e-4  # valeur classique pour une LoRA
+  grad_accum: 4          # 4 images avant chaque mise à jour (comme un lot de 4, sans la mémoire)
+  max_steps: 400         # mises à jour : 400 x 4 = 1 600 images vues, soit ~17 passages sur les 93
+  seed: 42
