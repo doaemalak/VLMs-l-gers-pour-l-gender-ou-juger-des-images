@@ -19,7 +19,9 @@ def load_vlm(model_id: str, precision: str = "normal"):
     # l'encodeur d'images (« visual » pour Qwen, « vision_model » pour SmolVLM)
     # en float16. La multiplication 8 bits de bitsandbytes plante sur
     # l'encodeur d'images (erreur cublasLt sur T4).
-    skip = ["visual", "vision_model", "lm_head"]
+    # Motifs regex : transformers compare depuis le DÉBUT du nom complet
+    # (ex. « model.visual.blocks.0.mlp »), d'où le préfixe « .* ».
+    skip = [r".*\.visual", r".*vision_model", "lm_head"]
     if precision == "8bit":
         kwargs["quantization_config"] = BitsAndBytesConfig(
             load_in_8bit=True,
