@@ -7,8 +7,10 @@ ou **évaluer** des images générées, et nous comparons chaque modèle en
 **précision normale, 8 bits et 4 bits**. Tout fonctionne sur Google Colab ou Kaggle
 avec **12 Go de VRAM au maximum**.
 
-- **Option A** : créer des légendes pour entraîner une LoRA.
-- **Option B** : comparer le jugement du VLM avec celui d'humains.
+- **Option A (notre choix)** : créer des légendes pour entraîner une LoRA.
+  Nous comparons une LoRA de Stable Diffusion 1.5 entraînée avec des légendes
+  humaines et avec des légendes de VLM (précision normale et 4 bits).
+- Option B (non retenue) : comparer le jugement du VLM avec celui d'humains.
 
 ## Équipe
 
