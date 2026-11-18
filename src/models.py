@@ -12,16 +12,25 @@ def load_vlm(model_id: str, precision: str = "normal"):
     if precision not in PRECISIONS:
         raise ValueError(f"Précision inconnue : {precision} (choix : {PRECISIONS})")
 
-    kwargs = {"device_map": "auto"}
-    if precision == "normal":
-        kwargs["torch_dtype"] = torch.float16
-    elif precision == "8bit":
-        kwargs["quantization_config"] = BitsAndBytesConfig(load_in_8bit=True)
-    else:
+    # float16 partout : le GPU T4 de Colab ne gère pas bien le bfloat16.
+    kwargs = {"device_map": "auto", "torch_dtype": torch.float16}
+
+    # Choix méthodologique : on quantifie le modèle de langage, mais on garde
+    # l'encodeur d'images (« visual » pour Qwen, « vision_model » pour SmolVLM)
+    # en float16. La multiplication 8 bits de bitsandbytes plante sur
+    # l'encodeur d'images (erreur cublasLt sur T4).
+    skip = ["visual", "vision_model", "lm_head"]
+    if precision == "8bit":
+        kwargs["quantization_config"] = BitsAndBytesConfig(
+            load_in_8bit=True,
+            llm_int8_skip_modules=skip,
+        )
+    elif precision == "4bit":
         kwargs["quantization_config"] = BitsAndBytesConfig(
             load_in_4bit=True,
             bnb_4bit_quant_type="nf4",
             bnb_4bit_compute_dtype=torch.float16,
+            llm_int8_skip_modules=skip,
         )
 
     processor = AutoProcessor.from_pretrained(model_id)
