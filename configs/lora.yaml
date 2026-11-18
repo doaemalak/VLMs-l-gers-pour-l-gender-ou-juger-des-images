@@ -31,3 +31,10 @@ train:
   grad_accum: 4          # 4 images avant chaque mise à jour (comme un lot de 4, sans la mémoire)
   max_steps: 400         # mises à jour : 400 x 4 = 1 600 images vues, soit ~17 passages sur les 93
   seed: 42
+
+# Étape 9 : générer des images avec et sans LoRA, puis les noter avec CLIP
+generate:
+  steps: 25              # étapes de débruitage (25 suffisent avec le scheduler DPM-Solver)
+  guidance: 7.5          # force avec laquelle l'image suit le texte (valeur standard de SD 1.5)
+  seeds: [0, 1]          # 2 images par phrase ; mêmes graines pour toutes les conditions
+  clip_model: openai/clip-vit-large-patch14   # le modèle CLIP utilisé par le « CLIP score »
