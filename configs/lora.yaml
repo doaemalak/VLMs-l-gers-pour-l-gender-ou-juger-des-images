@@ -1,0 +1,23 @@
+# Option A : préparer les données pour entraîner une LoRA de Stable Diffusion 1.5
+
+subset_csv: data/subset/subset.csv   # les 500 images déjà légendées (étape 5)
+captions_dir: results/captions       # légendes des VLM (étape 5)
+
+# Thème : les chiens. Une image est gardée si au moins `min_refs` des 5
+# légendes humaines contiennent un de ces mots (plus fiable qu'une seule).
+keywords: [dog, dogs, puppy, puppies]
+min_refs: 3
+
+# Une partie des images est mise de côté : leurs légendes humaines serviront
+# de phrases de test pour générer des images à l'étape 9.
+test_fraction: 0.2
+seed: 42
+
+# Les 3 jeux de légendes comparés (une LoRA entraînée par jeu)
+sources:
+  humain: ref1          # légende humaine de Flickr8k (la référence)
+  vlm2_normal: vlm2_normal
+  vlm2_4bit: vlm2_4bit
+
+out_dir: data/lora          # images + metadata.jsonl (format attendu par diffusers)
+results_dir: results/lora   # récapitulatif léger, gardé dans Google Drive

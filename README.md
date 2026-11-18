@@ -23,7 +23,7 @@ avec **12 Go de VRAM au maximum**.
 
 ```
 README.md      Présentation, installation, lancement, résultats
-notebooks/     01_donnees, 02_baseline, 03_modeles, 04_evaluation, 05_demo
+notebooks/     01_donnees, 02_baseline, 03_modeles, 04_evaluation, 05_demo, 06_lora
 src/           Code réutilisable (données, modèles, légendes, jugement, mesures)
 configs/       Paramètres des expériences (YAML)
 data/          Script de téléchargement et fiche des données (pas d'images)

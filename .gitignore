@@ -31,3 +31,6 @@ Thumbs.db
 # Secrets
 .env
 kaggle.json
+
+# Données préparées pour la LoRA (copies d images)
+data/lora/
